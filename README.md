@@ -9,7 +9,8 @@ Un mini projet pour apprendre les bases en Django.
 Pour lancer le projet localement sur votre machine de développement:
 
 ```sh
-$ docker-compose up -d --build
+$ pipenv shell
+$ ./manage.py runserver
 ```
 
 Vérifier que le projet se lance bien sur [http://localhost:8000/](http://localhost:8000/)
@@ -173,8 +174,6 @@ Pour ce sujet, il suffit simplement de recréer le forum en utilisant les [class
 
 ### Sujet 3: Créer un forum en Django Rest API + ReactJs
 Pour ce sujet, il faut créer une simple page app en ReactJs ainsi que de mettre en place un API REST pour communiquer avec la BDD. Pour cela, il faut utiliser le [Django REST framework](https://www.django-rest-framework.org/). Concernant la réalisation de l'application ReactJs, cette dernière se fera dans le dossier `app/assets/src/forum/`. L'ensemble des outils permettant l'intégration de l'app ReactJS dans un projet Django aura déjà été configuré.
-
-Pour lancer le watcher permettant le refresh automatique de l'application ReactJs se fait via la commande `docker-compose up -d npm_watch` en utilisant l'architecture docker, ou bien en lancant la commande `npm run watch` dans le dossier `app/assets/`.
 
 
 ### Sujet 4: Créer un forum en Django + IntercoolerJs
