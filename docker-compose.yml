@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - 8000:8000
+    environment:
+      - DEBUG=true
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=db
+      - SQL_USER=postgres
+      - SQL_PASSWORD=postgres
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DEBUG_EMAIL=
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12.2-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db
+volumes:
+  postgres_data:
