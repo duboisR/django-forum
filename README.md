@@ -155,11 +155,15 @@ Pour ce faire, je vais vous demandez de créer un forum qui sera composé:
     - L'app Django, le modèle et l'admin sont déja fournis.
     - Une page de login. Vous retrouverez le design de la page [ici](http://localhost:8000/main/login)
     - Une page de création de compte. Vous retrouverez le design de la page [ici](http://localhost:8000/main/register)
-    - De pages destinées au reset de mdp (avec envoi d'un mail). Vous retrouverez le design de la page [ici](http://localhost:8000/main/reset_pwd/)
+    - De pages destinées au reset de mdp (avec envoi d'un mail). Vous retrouverez le design des pages:
+        - [reset_pwd_form](http://localhost:8000/main/reset_pwd_form/)
+        - [reset_pwd_done](http://localhost:8000/main/reset_pwd_done/)
+        - [reset_pwd_confirm](http://localhost:8000/main/reset_pwd_confirm/)
+        - [reset_pwd_complete](http://localhost:8000/main/reset_pwd_complete/)
 - D'une partie "forum"
     - Une page listant tous les sujets (Topics) créés. Ces derniers pourront être filtrés sur leur titre, leur statut et s'ils ont déjà eu des réponses. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics)
     - Une page pour permettre la création d'un nouveau sujet. Attention, seul les utilisateurs ayant un compte peuvent créer un nouveau sujet. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics/new)
-    - Une page pour répondre au sujet sélectionné. Attention, seul les utilisateurs ayant un compte peuvent répondre, les autres ont un accès en lecture seul. De plus, si l'utilisateur connecté est le créateur du sujet, il doit y avoir un bouton permettre de clôturer le sujet. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics/<PK>/)
+    - Une page pour répondre au sujet sélectionné. Attention, seul les utilisateurs ayant un compte peuvent répondre, les autres ont un accès en lecture seul. De plus, si l'utilisateur connecté est le créateur du sujet, il doit y avoir un bouton permettre de clôturer le sujet. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics/topic_pk/)
 
 Ce sujet est commun à tous les minis projets.
 
