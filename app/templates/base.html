@@ -1,0 +1,47 @@
+{% load static i18n %}
+{% load render_bundle from webpack_loader %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport"
+        content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' />
+
+    <!-- Optional CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Main CSS -->
+    {% render_bundle 'main' 'css' %}
+
+    {% block extend_css %}{% endblock %}
+
+    <title>{% block extend_title %}{% endblock %}ReadMeAStory</title>
+</head>
+
+<body>
+    {% block body %}
+    {% include "frags/navbar.html" %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then intercoolerjs, then Bootstrap JS -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/intercooler-1.2.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Main JS -->
+    {% render_bundle 'main' 'js' %}
+
+    {% block extend_javascript %}{% endblock %}
+</body>
+
+</html>

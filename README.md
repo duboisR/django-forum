@@ -113,14 +113,14 @@ Version NVM / NPM
 ```
 $ nvm list
     [...]
-->     v13.11.0
-default -> node (-> v13.11.0)
-node -> stable (-> v13.11.0) (default)
-stable -> 13.11 (-> v13.11.0) (default)
+->      v15.3.0
+default -> node (-> v15.3.0)
+node -> stable (-> v15.3.0) (default)
+stable -> 15.3 (-> v15.3.0) (default)
 [...]
 
 $ npm --version
-6.14.2
+7.0.14
 ```
 
 Pour lancer le watcher de webpack
