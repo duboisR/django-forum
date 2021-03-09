@@ -151,6 +151,8 @@ Pour ce faire, vous pouvez suivre l'article Medium [Django et E-mail](https://me
 
 Ce mini projet a été mis en place pour vous permettre de découvrir/apprendre/perfectionner les bases en Django.
 Le design des pages se basera sur un thème Bootstrap trouver sur [bootdey](https://www.bootdey.com/snippets/view/bs4-forum).
+On utilise aussi un bout de code fourni sur [stackoverflow](https://stackoverflow.com/a/41406599) pour l'avatar de la page profile.
+
 Pour aller plus vite, l'ensemble des templates sera déjà disponible dans l'app Django `main`.
 
 Pour ce projet, je vais vous demandez de créer un forum qui sera composé:

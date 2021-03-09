@@ -1,5 +1,5 @@
 .content {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 116px);
 }
 
 footer {
@@ -112,4 +112,29 @@ footer {
     min-height: 1px;
     padding: 1rem;
   }
+}
+
+// Profile avatar
+#imageUpload
+{
+    display: none;
+}
+#profileImage
+{
+    cursor: pointer;
+}
+#profile-container {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+#profile-container img {
+    width: 150px;
+    height: 150px;
 }

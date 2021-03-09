@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extend_title %}Profil |{% endblock %}
+
+{% block content %}
+<div class="col-6 mx-auto pt-5">
+    <div class="border rounded p-4">
+        <h3 class="mb-5 text-center">Profil</h3>
+        <form>
+            <div class="form-group">
+                <div id="profile-container">
+                    <image id="profileImage" src="{% static 'img/avatar.png' %}" />
+                </div>
+                <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>    
+            </div>
+            
+            <div class="form-group">
+                <input type="text" name="username" autofocus="false" placeholder="Email" class="form-control"
+                    required="" id="id_username">
+            </div>
+            <div class="form-group">
+                <input type="text" name="first_name" autofocus="false" placeholder="First Name" class="form-control"
+                    required="" id="id_first_name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="last_name" autofocus="false" placeholder="Last Name" class="form-control"
+                    required="" id="id_last_name">
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-primary btn-round btn-block btn-loading shadow-sm mt-4">
+                Update
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
