@@ -11,6 +11,7 @@ var config = {
   // Path to your entry point. From this file Webpack will begin his work
   entry: {
     main: './src/js/main.js',
+    helloworld: './src/apps/helloworld/index.js',
   },
 
   // Path and filename of your result bundle.
@@ -34,7 +35,7 @@ var config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },

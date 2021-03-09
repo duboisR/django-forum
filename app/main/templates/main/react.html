@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load render_bundle from webpack_loader %}
+
+{% block extend_title %}React |{% endblock %}
+
+{% block content %}
+<div class="col-6 mx-auto pt-5">
+    <div class="border rounded p-4">
+        <h3 class="mb-5 text-center">React Component</h3>
+        <div id="react-helloworld"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extend_javascript %}
+  {{ block.super }}
+  {% render_bundle 'helloworld' %}
+{% endblock %}
