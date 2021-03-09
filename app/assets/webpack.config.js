@@ -78,7 +78,7 @@ var config = {
       filename: "[name]-[contenthash].css"
     }),
     new BundleTracker({
-      filename: "../static/webpack-stats.json"
+      filename: "./webpack-stats.json"
     }),
   ],
 };

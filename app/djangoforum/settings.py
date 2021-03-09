@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Custom apps
+    # External apps
+    'webpack_loader',
+
+    # Internal apps
     'user',
     'main',
 ]
@@ -166,3 +169,19 @@ if DEBUG_EMAIL:
     EMAIL_USE_TLS = True
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
+
+# Webpack loader
+# https://github.com/django-webpack/django-webpack-loader
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'bundle/', # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, 'assets/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+        'LOADER_CLASS': 'webpack_loader.loader.WebpackLoader',
+    }
+}

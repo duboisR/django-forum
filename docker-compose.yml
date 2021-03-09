@@ -17,11 +17,10 @@ services:
       - SQL_HOST=db
       - SQL_PORT=5432
       - DEBUG_EMAIL=
-      - EMAIL_HOST_USER
-      - EMAIL_HOST_PASSWORD
+      - EMAIL_HOST_USER=
+      - EMAIL_HOST_PASSWORD=
     depends_on:
       - db
-
   db:
     image: postgres:12.2-alpine
     volumes:
@@ -30,5 +29,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=db
+
 volumes:
   postgres_data:

@@ -2,6 +2,9 @@
 
 Un mini projet pour apprendre les bases en Django.
 
+Plugins:
+- [django](https://www.djangoproject.com/)
+- [django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)
 
 
 ## Développement Pipenv
@@ -105,7 +108,7 @@ Il vous suffit ensuite de vous connecter à la [page d'administration Django](ht
 
 
 
-## Modification du thème/reactJs
+## Modification du thème/ReactJs
 
 Nous utilisons Webpack pour concaténer/minifier/bunble nos fichiers JS + SCSS.
 
@@ -144,28 +147,30 @@ Pour ce faire, vous pouvez suivre l'article Medium [Django et E-mail](https://me
 
 
 
-## Sujets
+## Projet
 
-Ce mini projet pour apprendre les bases en Django.
-Le design des pages se basera sur un thème Bootstrap.
-Pour aller plus vite, l'ensemble des templates sera déjà disponible dans l'app Django "main".
+Ce mini projet a été mis en place pour vous permettre de découvrir/apprendre/perfectionner les bases en Django.
+Le design des pages se basera sur un thème Bootstrap trouver sur [bootdey](https://www.bootdey.com/snippets/view/bs4-forum).
+Pour aller plus vite, l'ensemble des templates sera déjà disponible dans l'app Django `main`.
 
-Pour ce faire, je vais vous demandez de créer un forum qui sera composé:
+Pour ce projet, je vais vous demandez de créer un forum qui sera composé:
 - D'une partie "compte utilisateur"
-    - L'app Django, le modèle et l'admin sont déja fournis.
+    - L'app Django `user`, le modèle et l'admin sont déja fournis.
     - Une page de login. Vous retrouverez le design de la page [ici](http://localhost:8000/main/login)
     - Une page de création de compte. Vous retrouverez le design de la page [ici](http://localhost:8000/main/register)
-    - De pages destinées au reset de mdp (avec envoi d'un mail). Vous retrouverez le design des pages:
+    - Des pages destinées au reset de mdp (avec envoi d'un mail). Vous retrouverez le design des pages:
         - [reset_pwd_form](http://localhost:8000/main/reset_pwd_form/)
         - [reset_pwd_done](http://localhost:8000/main/reset_pwd_done/)
         - [reset_pwd_confirm](http://localhost:8000/main/reset_pwd_confirm/)
         - [reset_pwd_complete](http://localhost:8000/main/reset_pwd_complete/)
+    - D'un page profile pour mettre a jour les données du compte utilisateur. Vous retrouverez le design de la page [ici](http://localhost:8000/main/profil/)
 - D'une partie "forum"
     - Une page listant tous les sujets (Topics) créés. Ces derniers pourront être filtrés sur leur titre, leur statut et s'ils ont déjà eu des réponses. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics)
     - Une page pour permettre la création d'un nouveau sujet. Attention, seul les utilisateurs ayant un compte peuvent créer un nouveau sujet. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics/new)
     - Une page pour répondre au sujet sélectionné. Attention, seul les utilisateurs ayant un compte peuvent répondre, les autres ont un accès en lecture seul. De plus, si l'utilisateur connecté est le créateur du sujet, il doit y avoir un bouton permettre de clôturer le sujet. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics/topic_pk/)
+Toutes ces pages sont disponibles sur la [homepage](http://localhost:8000/) du projet.
 
-Ce sujet est commun à tous les minis projets.
+Ce projet est commun à tous les sujets ci-dessous.
 
 
 ### Sujet 1: Créer un forum en Django (sans utiliser les classBasedViews)
@@ -178,13 +183,15 @@ Pour ce sujet, il suffit simplement de recréer le forum en utilisant les [class
 
 ### Sujet 3: Créer un forum en Django Rest API + ReactJs
 Pour ce sujet, il faut créer une simple page app en ReactJs ainsi que de mettre en place un API REST pour communiquer avec la BDD. Pour cela, il faut utiliser le [Django REST framework](https://www.django-rest-framework.org/). Concernant la réalisation de l'application ReactJs, cette dernière se fera dans le dossier `app/assets/src/forum/`. L'ensemble des outils permettant l'intégration de l'app ReactJS dans un projet Django aura déjà été configuré.
+Vous retrouverez un exemple d'integration d'un composant ReactJs dans une view Django [ici](http://localhost:8000/main/react/).
 
 
 ### Sujet 4: Créer un forum en Django + IntercoolerJs
 Pour ce sujet, il suffit simplement de recréer le forum en utilisant les [classBasedViews](https://docs.djangoproject.com/fr/3.1/topics/class-based-views/) et le framework [IntercoolerJs](https://intercoolerjs.org/). Pour permettre une prise en main plus rapide d'intercoolerJs, vous pouvez vous insperer des [exemples](http://djangointercooler.pythonanywhere.com/) que j'ai recodé pour montrer l'integration d'intercoolerJs dans un projet Django.
+Seule la partie "forum" est a adapter avec le framework IntercoolerJs.
 
 
 ### Sujet 5: Créer un forum en Django Rest API + Flutter
 Pour ce sujet, il faut créer une application mobile en Flutter ainsi que de mettre en place un API REST pour communiquer avec la BDD. Pour cela, il faut utiliser le [Django REST framework](https://www.django-rest-framework.org/). Concernant la réalisation de l'application ReactJs, cette dernière se fera dans le dossier `mobile/`.
 
-Pour lancer l'application mobile, il vous suffit de faire la commande ` flutter run` après avoir lancé un émulateur Android.
+Pour lancer l'application mobile, il vous suffit de faire la commande `flutter run` dans le dossier `mobile/` après avoir lancé un émulateur Android/Ios.

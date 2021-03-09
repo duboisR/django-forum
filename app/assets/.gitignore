@@ -1,2 +1,4 @@
 # NPM packages
 node_modules/*
+# Webpack Builder
+webpack-stats.json

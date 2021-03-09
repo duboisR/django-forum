@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
 
+class HomeTemplateView(TemplateView):
+    template_name = 'main/home.html'
 
 class LoginTemplateView(TemplateView):
     template_name = 'main/login.html'
@@ -19,6 +21,9 @@ class ResetPwdConfirmTemplateView(TemplateView):
 class ResetPwdCompleteTemplateView(TemplateView):
     template_name = 'main/reset_pwd_complete.html'
 
+class ProfilTemplateView(TemplateView):
+    template_name = 'main/profil.html'
+
 class TopicListTemplateView(TemplateView):
     template_name = 'main/topic_list.html'
 
@@ -27,3 +32,6 @@ class TopicDetailTemplateView(TemplateView):
 
 class TopicCreateTempalteView(TemplateView):
     template_name = 'main/topic_create.html'
+
+class ReactTempalteView(TemplateView):
+    template_name = 'main/react.html'
