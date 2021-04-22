@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block extend_title %}Topics |{% endblock %}
+
+{% block content %}
+<div class="topic">
+    <div class="inner-wrapper">
+        <!-- Inner sidebar -->
+        <div class="inner-sidebar">
+            <!-- Inner sidebar header -->
+            <div class="inner-sidebar-header justify-content-center">
+                <a class="btn btn-primary has-icon btn-block" href="{% url 'topic_create' %}">New topic</a>
+            </div>
+            <!-- /Inner sidebar header -->
+
+            <!-- Inner sidebar body -->
+            <div class="inner-sidebar-body p-0">
+                <div class="p-3 h-100" data-simplebar="init">
+                    <nav class="nav nav-pills nav-gap-y-1 flex-column">
+                        <a href="{% url 'topic_list' %}" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'all' %}active{% endif %}">
+                            All Threads
+                        </a>
+                        <a href="{% url 'topic_list' %}?filter=solved" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'solved' %}active{% endif %}">Solved</a>
+                        <a href="{% url 'topic_list' %}?filter=unsolved" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'unsolved' %}active{% endif %}">Unsolved</a>
+                        <a href="{% url 'topic_list' %}?filter=noreplies" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'noreplies' %}active{% endif %}">
+                            No replies yet
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            <!-- /Inner sidebar body -->
+        </div>
+        <!-- /Inner sidebar -->
+
+        <!-- Inner main -->
+        <div class="inner-main">
+            <!-- Inner main header -->
+            <div class="inner-main-header">
+                <span class="input-icon input-icon-sm ml-auto w-auto">
+                    <form method="get">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <input type="hidden" name="filter" value="{{queryparam_filter}}" />
+                                <input type="text" name="search" class="form-control bg-gray-200 border-gray-200 shadow-none"
+                                    placeholder="Search forum" value="{{queryparam_search}}" />
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" class="btn btn-primary has-icon btn-block" value="Search" />
+                            </div>
+                        </div>
+                    </form>
+                </span>
+            </div>
+            <!-- /Inner main header -->
+
+            <!-- Inner main body -->
+
+            <!-- Forum List -->
+            <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+                {% for i in '*****' %}
+                <div class="card mb-2">
+                    <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle"
+                                width="50" alt="User" />
+                            <div class="media-body">
+                                <h6 class="text-body"><a class="text-dark" href="javascript:void(0)">Realtime fetching data</a></h6>
+                                <p class="text-secondary">
+                                    lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet
+                                </p>
+                                <p class="text-muted">
+                                    <span class="text-secondary font-weight-bold">drewdan</span>
+                                    replied
+                                    <span class="text-secondary font-weight-bold">13 minutes ago</span>
+                                </p>
+                            </div>
+                            <div class="text-muted small text-center align-self-center">
+                                <span><i class="far fa-comment ml-2"></i> 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- Pagination -->
+                <ul class="pagination pagination-sm pagination-circle justify-content-center my-4">
+                    <li class="page-item disabled">
+                        <span class="page-link has-icon"><i class="fas fa-chevron-left"></i></span>
+                    </li>
+                    <li class="page-item active"><span class="page-link">1</span></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link has-icon" href="javascript:void(0)">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /Pagination -->
+            </div>
+            <!-- /Forum List -->
+        </div>
+        <!-- /Inner main -->
+    </div>
+</div>
+{% endblock %}
