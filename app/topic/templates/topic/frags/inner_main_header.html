@@ -1,0 +1,16 @@
+<div class="inner-main-header">
+    <span class="input-icon input-icon-sm ml-auto w-auto">
+        <form method="get" action="{% url 'topic_list' %}">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <input type="hidden" name="filter" value="{{queryparam_filter}}" />
+                    <input type="text" name="search" class="form-control bg-gray-200 border-gray-200 shadow-none"
+                        placeholder="Search forum" value="{{queryparam_search}}" />
+                </div>
+                <div class="col-auto">
+                    <input type="submit" class="btn btn-primary has-icon btn-block" value="Search" />
+                </div>
+            </div>
+        </form>
+    </span>
+</div>

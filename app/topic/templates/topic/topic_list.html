@@ -6,76 +6,53 @@
 <div class="topic">
     <div class="inner-wrapper">
         <!-- Inner sidebar -->
-        <div class="inner-sidebar">
-            <!-- Inner sidebar header -->
-            <div class="inner-sidebar-header justify-content-center">
-                <a class="btn btn-primary has-icon btn-block" href="{% url 'topic_create' %}">New topic</a>
-            </div>
-            <!-- /Inner sidebar header -->
-
-            <!-- Inner sidebar body -->
-            <div class="inner-sidebar-body p-0">
-                <div class="p-3 h-100" data-simplebar="init">
-                    <nav class="nav nav-pills nav-gap-y-1 flex-column">
-                        <a href="{% url 'topic_list' %}" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'all' %}active{% endif %}">
-                            All Threads
-                        </a>
-                        <a href="{% url 'topic_list' %}?filter=solved" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'solved' %}active{% endif %}">Solved</a>
-                        <a href="{% url 'topic_list' %}?filter=unsolved" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'unsolved' %}active{% endif %}">Unsolved</a>
-                        <a href="{% url 'topic_list' %}?filter=noreplies" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'noreplies' %}active{% endif %}">
-                            No replies yet
-                        </a>
-                    </nav>
-                </div>
-            </div>
-            <!-- /Inner sidebar body -->
-        </div>
+        {% include 'topic/frags/inner_sidebar.html' %}
         <!-- /Inner sidebar -->
 
         <!-- Inner main -->
         <div class="inner-main">
             <!-- Inner main header -->
-            <div class="inner-main-header">
-                <span class="input-icon input-icon-sm ml-auto w-auto">
-                    <form method="get">
-                        <div class="form-row align-items-center">
-                            <div class="col-auto">
-                                <input type="hidden" name="filter" value="{{queryparam_filter}}" />
-                                <input type="text" name="search" class="form-control bg-gray-200 border-gray-200 shadow-none"
-                                    placeholder="Search forum" value="{{queryparam_search}}" />
-                            </div>
-                            <div class="col-auto">
-                                <input type="submit" class="btn btn-primary has-icon btn-block" value="Search" />
-                            </div>
-                        </div>
-                    </form>
-                </span>
-            </div>
+            {% include 'topic/frags/inner_main_header.html' %}
             <!-- /Inner main header -->
-
-            <!-- Inner main body -->
 
             <!-- Forum List -->
             <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
-                {% for i in '*****' %}
+                {% for topic_instance in topic_list %}
                 <div class="card mb-2">
                     <div class="card-body p-2 p-sm-3">
                         <div class="media forum-item">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle"
+                            <img src="{{topic_instance.creator.get_avatar_url}}" class="mr-3 rounded-circle"
                                 width="50" alt="User" />
                             <div class="media-body">
-                                <h6 class="text-body"><a class="text-dark" href="javascript:void(0)">Realtime fetching data</a></h6>
+                                <h6 class="text-body"><a class="text-dark" href="{% url 'topic_detail' topic_instance.pk %}">{{topic_instance.title}}</a></h6>
                                 <p class="text-secondary">
-                                    lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet
+                                    {{topic_instance.description}}
                                 </p>
                                 <p class="text-muted">
-                                    <span class="text-secondary font-weight-bold">drewdan</span>
+                                    {% if topic_instance.topicmessage_set.last %}
+                                    <span class="text-secondary font-weight-bold">{{topic_instance.topicmessage_set.last.creator.get_fullname}}</span>
                                     replied
-                                    <span class="text-secondary font-weight-bold">13 minutes ago</span>
+                                    <span class="text-secondary font-weight-bold">{{topic_instance.topicmessage_set.last.created_at|date:'d/m/Y H:i'}}</span>
+                                    {% else %}
+                                    no reply
+                                    {% endif %}
                                 </p>
                             </div>
                             <div class="text-muted small text-center align-self-center">
-                                <span><i class="far fa-comment ml-2"></i> 3</span>
+                                <span><i class="far fa-comment ml-2"></i> {{topic_instance.topicmessage_set.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="card mb-2">
+                    <div class="card-body p-2 p-sm-3">
+                        <div class="media forum-item">
+                            <div class="media-body text-center">
+                                <h6 class="text-body"><a class="text-dark" href="javascript:void(0)">No topics</a></h6>
+                                <p class="text-secondary">
+                                    Please <a href="{% url 'topic_create' %}?{{queryparams}}">create</a> a new one.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -83,19 +60,25 @@
                 {% endfor %}
 
                 <!-- Pagination -->
+                {% if page_obj %}
                 <ul class="pagination pagination-sm pagination-circle justify-content-center my-4">
-                    <li class="page-item disabled">
-                        <span class="page-link has-icon"><i class="fas fa-chevron-left"></i></span>
-                    </li>
-                    <li class="page-item active"><span class="page-link">1</span></li>
-                    <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link has-icon" href="javascript:void(0)">
+                        <a class="page-link has-icon" href="?page={{ page_obj.previous_page_number }}&filter={{queryparam_filter}}&search={{queryparam_search}}">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link has-icon" href="?page={{ page_obj.next_page_number }}&filter={{queryparam_filter}}&search={{queryparam_search}}">
                             <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
+                {% endif %}
                 <!-- /Pagination -->
             </div>
             <!-- /Forum List -->

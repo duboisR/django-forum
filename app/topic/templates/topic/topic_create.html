@@ -6,71 +6,35 @@
 <div class="topic">
     <div class="inner-wrapper">
         <!-- Inner sidebar -->
-        <div class="inner-sidebar">
-            <!-- Inner sidebar header -->
-            <div class="inner-sidebar-header justify-content-center">
-                <button class="btn btn-primary has-icon btn-block" type="button">New topic</button>
-            </div>
-            <!-- /Inner sidebar header -->
-
-            <!-- Inner sidebar body -->
-            <div class="inner-sidebar-body p-0">
-                <div class="p-3 h-100" data-simplebar="init">
-                    <nav class="nav nav-pills nav-gap-y-1 flex-column">
-                        <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon active">
-                            All Threads
-                        </a>
-                        <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Solved</a>
-                        <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Unsolved</a>
-                        <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">
-                            No replies yet
-                        </a>
-                    </nav>
-                </div>
-            </div>
-            <!-- /Inner sidebar body -->
-        </div>
+        {% include 'topic/frags/inner_sidebar.html' %}
         <!-- /Inner sidebar -->
 
         <!-- Inner main -->
         <div class="inner-main">
             <!-- Inner main header -->
-            <div class="inner-main-header">
-                <span class="input-icon input-icon-sm ml-auto w-auto">
-                    <form>
-                        <div class="form-row align-items-center">
-                            <div class="col-auto">
-                                <input type="text" class="form-control bg-gray-200 border-gray-200 shadow-none"
-                                    placeholder="Search forum" />
-                            </div>
-                            <div class="col-auto">
-                                <input type="submit" class="btn btn-primary has-icon btn-block" value="Search" />
-                            </div>
-                        </div>
-                    </form>
-                </span>
-            </div>
+            {% include 'topic/frags/inner_main_header.html' %}
             <!-- /Inner main header -->
-
-            <!-- Inner main body -->
 
             <!-- Forum Detail -->
             <div class="inner-main-body p-2 p-sm-3 forum-content">
-                <a href="javascript:void(0)" class="btn btn-light btn-sm mb-3 has-icon">
+                <a href="javascript:window.history.back()" class="btn btn-light btn-sm mb-3 has-icon">
                     <i class="fa fa-arrow-left mr-2"></i> Back
                 </a>
 
                 <h3>Create new Topic</h3>
                 <hr />
 
-                <form>
+                <form method="post">
+
+                    {% csrf_token %}
+
                     <div class="form-group mb-2">
                         <label for="title" class="">Your title</label>
-                        <input type="text" class="form-control" id="title"/>
+                        <input type="text" class="form-control" id="title" name="title"/>
                     </div>
                     <div class="form-group mb-2">
                         <label for="description" class="">Your message</label>
-                        <textarea class="form-control" id="description" style="height: 145px;"></textarea>
+                        <textarea class="form-control" id="description" name="description" style="height: 145px;"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Create</button>
                 </form>

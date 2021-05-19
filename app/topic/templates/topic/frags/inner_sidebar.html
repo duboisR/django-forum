@@ -1,0 +1,24 @@
+<div class="inner-sidebar">
+    <!-- Inner sidebar header -->
+    <div class="inner-sidebar-header justify-content-center">
+        <a class="btn btn-primary has-icon btn-block" href="{% url 'topic_create' %}?{{queryparams}}">New topic</a>
+    </div>
+    <!-- /Inner sidebar header -->
+
+    <!-- Inner sidebar body -->
+    <div class="inner-sidebar-body p-0">
+        <div class="p-3 h-100" data-simplebar="init">
+            <nav class="nav nav-pills nav-gap-y-1 flex-column">
+                <a href="{% url 'topic_list' %}?search={{queryparam_search}}" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'all' %}active{% endif %}">
+                    All Threads
+                </a>
+                <a href="{% url 'topic_list' %}?filter=solved&search={{queryparam_search}}" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'solved' %}active{% endif %}">Solved</a>
+                <a href="{% url 'topic_list' %}?filter=unsolved&search={{queryparam_search}}" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'unsolved' %}active{% endif %}">Unsolved</a>
+                <a href="{% url 'topic_list' %}?filter=noreplies&search={{queryparam_search}}" class="nav-link nav-link-faded has-icon {% if queryparam_filter == 'noreplies' %}active{% endif %}">
+                    No replies yet
+                </a>
+            </nav>
+        </div>
+    </div>
+    <!-- /Inner sidebar body -->
+</div>
