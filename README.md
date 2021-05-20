@@ -172,6 +172,8 @@ Pour ce projet, je vais vous demandez de créer un forum qui sera composé:
     - Une page pour répondre au sujet sélectionné. Attention, seul les utilisateurs ayant un compte peuvent répondre, les autres ont un accès en lecture seul. De plus, si l'utilisateur connecté est le créateur du sujet, il doit y avoir un bouton permettre de clôturer le sujet. Vous retrouverez le design de la page [ici](http://localhost:8000/main/topics/topic_pk/)
 Toutes ces pages sont disponibles sur la [homepage](http://localhost:8000/) du projet.
 
+Pour la partie login/registration, n'hésitez pas à jeter un oeil au [Django's Built-in Login System](https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html)
+
 Ce projet est commun à tous les sujets ci-dessous.
 
 

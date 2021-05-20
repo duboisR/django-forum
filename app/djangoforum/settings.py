@@ -34,13 +34,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
     # External apps
     'webpack_loader',
 
@@ -48,6 +41,14 @@ INSTALLED_APPS = [
     'user',
     'main',
     'topic',
+
+    # Django contrib
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -155,7 +156,9 @@ STATICFILES_FINDERS = (
 # https://docs.djangoproject.com/fr/2.2/topics/auth/customizing/
 
 AUTH_USER_MODEL = 'user.User'
-
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'topic_list'
+LOGOUT_REDIRECT_URL = 'login'
 
 # Email
 # https://docs.djangoproject.com/fr/2.2/topics/email/
