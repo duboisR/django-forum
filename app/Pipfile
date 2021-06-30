@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
-django-webpack-loader = "*"
+django-webpack-loader = "==0.7.0"
 
 [dev-packages]
 
