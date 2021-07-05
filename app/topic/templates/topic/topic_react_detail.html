@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load render_bundle from webpack_loader %}
+
+{% block extend_title %}Topics React |{% endblock %}
+
+{% block content %}
+<div class="topic">
+  <div id="react-topicdetail" data-topicid="{{topic_instance.pk}}" data-filter="{{queryparam_filter}}" data-search={{queryparam_search}}></div>
+</div>
+{% endblock %}
+
+{% block extend_javascript %}
+  {{ block.super }}
+  {% render_bundle 'topicdetail' %}
+{% endblock %}
