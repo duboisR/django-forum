@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     # External apps
     'webpack_loader',
+    'rest_framework',
 
     # Internal apps
     'user',
@@ -188,4 +189,12 @@ WEBPACK_LOADER = {
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
         'LOADER_CLASS': 'webpack_loader.loader.WebpackLoader',
     }
+}
+
+
+# Django REST API
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3
 }

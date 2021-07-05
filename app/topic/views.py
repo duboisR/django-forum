@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.shortcuts import reverse
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, TemplateView
 
 import topic.models
 from topic.mixins import QueryparamMixins
@@ -76,3 +76,16 @@ class TopicCreateView(LoginRequiredMixin, QueryparamMixins, CreateView):
     def get_success_url(self):
         """Return the URL to redirect to after processing a valid form."""
         return "%s?%s" % (reverse('topic_detail', kwargs={'topic_pk': self.object.pk}), self.request.GET.urlencode())
+
+
+class TopicReactListView(QueryparamMixins, TemplateView):
+    template_name = 'topic/topic_react_list.html'
+
+
+class TopicReactMessageView(QueryparamMixins, TemplateView):
+    template_name = 'topic/topic_react_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        context['topic_instance'] = topic.models.Topic.objects.get(pk=self.kwargs.get('topic_pk'))
+        return context
