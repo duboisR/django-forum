@@ -49,42 +49,9 @@ const TopicHeader = ({search, setSearch}) => {
     )
 }
 
-const TopicDetailItem = ({topic}) => {
-    return (
-        <div className="card mb-2">
-            <div className="card-body p-2 p-sm-3">
-                <div className="media forum-item">
-                    <img src={topic.creator_serializer.avatar} className="mr-3 rounded-circle"
-                        width="50" alt="User" />
-                    <div className="media-body">
-                        <h6 className="text-body"><a className="text-dark" href={`/topics/${topic.id}/react/`}>{topic.title}</a></h6>
-                        <p className="text-secondary">
-                            {topic.description}
-                        </p>
-                        <div className="text-muted">
-                            {topic.topicmessage_last ? (
-                                <div>
-                                    <span className="text-secondary font-weight-bold">{topic.topicmessage_last.creator_name} </span>
-                                    replied
-                                    <span className="text-secondary font-weight-bold"> {topic.topicmessage_last.created_at}</span>
-                                </div>
-                            ) : (
-                                <div>no reply</div>
-                            )}
-                        </div>
-                    </div>
-                    <div className="text-muted small text-center align-self-center">
-                        <span><i className="far fa-comment ml-2"></i> {topic.topicmessage_count}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
 const TopicMessage = ({message}) => {
     return (
-        <div key={`message-${message.pk}`} className="card mb-2">
+        <div className="card mb-2">
             <div className="card-body">
                 <div className="media forum-item">
                     <a href="#" className="card-link">
@@ -124,11 +91,18 @@ const TopicDetail = ({props}) => {
     const [filter, setFilter] = useState(props.filter || "all");
     const [search, setSearch] = useState(props.search || "");
     const [result, setResult] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(async () => {
         await fetchTopicDetail()
-    }, [filter, search]);
+        setLoading(false)
+    }, []);
     
+    useEffect(async () => {
+        console.log(loading)
+        if (!loading) window.location = `/topics/react/?search=${search}&filter=${filter}`
+    }, [filter, search]);
+
     const fetchTopicDetail = async (url=null) => {
         const fetchUrl = `/api/topic/${props.topicid}/`;
         const response = await jsonFetchData(fetchUrl);
@@ -178,7 +152,7 @@ const TopicDetail = ({props}) => {
                         </div>
                         <hr />
 
-                        {result.messages_serializer.map(message => <TopicMessage message={message} />)}
+                        {result.messages_serializer.map(message => <TopicMessage key={`message-${message.pk}`} message={message} />)}
                         <hr />
 
                         <TopicForm createMessage={createMessage} />

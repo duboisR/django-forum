@@ -49,7 +49,7 @@ const TopicHeader = ({search, setSearch}) => {
     )
 }
 
-const TopicListItem = ({topic}) => {
+const TopicListItem = ({topic, search, filter}) => {
     return (
         <div className="card mb-2">
             <div className="card-body p-2 p-sm-3">
@@ -57,7 +57,7 @@ const TopicListItem = ({topic}) => {
                     <img src={topic.creator_serializer.avatar} className="mr-3 rounded-circle"
                         width="50" alt="User" />
                     <div className="media-body">
-                        <h6 className="text-body"><a className="text-dark" href={`/topics/${topic.id}/react/`}>{topic.title}</a></h6>
+                        <h6 className="text-body"><a className="text-dark" href={`/topics/${topic.id}/react/?search=${search}&filter=${filter}`}>{topic.title}</a></h6>
                         <p className="text-secondary">
                             {topic.description}
                         </p>
@@ -108,7 +108,7 @@ const TopicList = ({props}) => {
                 <div className="inner-main-body p-2 p-sm-3 collapse forum-content show">
                     {result && (
                         <div>
-                            {result.map(topic => <TopicListItem key={topic.id} topic={topic} />)}
+                            {result.map(topic => <TopicListItem key={`topic-${topic.id}`} topic={topic} search={search} filter={filter}/>)}
                             {nextUrl && <button onClick={() => fetchTopicList(nextUrl)} className="btn btn-primary btn-block">More</button>}
                         </div>
                     )}
