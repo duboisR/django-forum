@@ -66,7 +66,7 @@ Pour créer un compte super utilisateur:
 $ ./manage.py createsuperuser
 ```
 
-Il vous suffit ensuite de vous connecter à la [page d'administration Django](http://localhost:8000/rmas-admin/) avec les identifiants que vous avez renseigné.
+Il vous suffit ensuite de vous connecter à la [page d'administration Django](http://localhost:8000/admin/) avec les identifiants que vous avez renseigné.
 
 
 
@@ -104,7 +104,7 @@ Pour créer un compte super utilisateur:
 $ docker-compose exec web ./manage.py createsuperuser
 ```
 
-Il vous suffit ensuite de vous connecter à la [page d'administration Django](http://localhost:8000/rmas-admin/) avec les identifiants que vous avez renseigné.
+Il vous suffit ensuite de vous connecter à la [page d'administration Django](http://localhost:8000/admin/) avec les identifiants que vous avez renseigné.
 
 
 
