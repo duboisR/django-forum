@@ -62,6 +62,7 @@ En cas de problèmes, vous pouvez vous référer à la section **Modification du
 
 ```sh
 $ cd app/assets
+$ npm install
 $ npm run build
 ```
 
