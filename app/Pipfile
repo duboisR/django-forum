@@ -8,6 +8,8 @@ django = "*"
 pillow = "*"
 django-webpack-loader = "==0.7.0"
 djangorestframework = "*"
+pyyaml = "*"
+uritemplate = "*"
 
 [dev-packages]
 

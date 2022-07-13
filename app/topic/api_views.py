@@ -6,6 +6,10 @@ import topic.models
 import topic.serializer
 
 class TopicListAPIView(generics.ListAPIView):
+    """
+    Returns a list of **selected** topics in the system.
+    """
+
     queryset = topic.models.Topic.objects.all()
     serializer_class = topic.serializer.TopicSerializer
 
@@ -31,10 +35,18 @@ class TopicListAPIView(generics.ListAPIView):
 
 
 class TopicRetrieveAPIView(generics.RetrieveAPIView):
+    """
+    Returns the **selected** topic informations.
+    """
+
     queryset = topic.models.Topic.objects.all()
     serializer_class = topic.serializer.TopicRetrieveSerializer
 
 
 class TopicMessageCreateAPIView(generics.CreateAPIView):
+    """
+    Create message linked to a **specific** topic.
+    """
+
     queryset = topic.models.TopicMessage.objects.all()
     serializer_class = topic.serializer.TopicMessageSerializer

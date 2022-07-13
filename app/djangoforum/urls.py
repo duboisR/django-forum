@@ -15,15 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
-urlpatterns = [
+from rest_framework.schemas import get_schema_view
+
+
+api_urlpattern = [
     # API Views
     path('api/', include('topic.api_urls')),
+]
 
+urlpatterns = api_urlpattern + [
     # Views
     path('', include('topic.urls')),
     path('users/', include('user.urls')),
 
     path('admin/', admin.site.urls),
     path('main/', include('main.urls')),
+
+    # API Documentation
+    path('openapi', get_schema_view(
+            title="API Django Forum",
+            description="Django Forum API Documentation",
+            version="1.0.0",
+            patterns=api_urlpattern,
+        ), name='openapi-schema'),
+    path('redoc/', TemplateView.as_view(
+        template_name='redoc.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='redoc'),
 ]
